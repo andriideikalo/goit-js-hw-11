@@ -1,4 +1,4 @@
-import './_example.scss';
+import './sass/_example.scss';
 
 import { createMarkup } from './modules/markup';
 import { PER_PAGE, fetchPhotoApi } from './modules/fetch';
