@@ -18,6 +18,7 @@
         "url": "https://github.com/andriideikalo/goit-js-hw-11/issues"
     },
     "dependencies": {
+        "axios": "^1.2.1",
         "modern-normalize": "^1.1.0"
     },
     "devDependencies": {
