@@ -1,4 +1,4 @@
-// import './css/styles.css';
+import './_example.scss';
 
 import { createMarkup } from './modules/markup';
 import { PER_PAGE, fetchPhotoApi } from './modules/fetch';
