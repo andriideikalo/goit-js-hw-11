@@ -3,13 +3,19 @@ import './sass/_styles.scss';
 import { createMarkup } from './modules/markup';
 import { PER_PAGE, fetchPhotoApi } from './modules/fetch';
 import { simpleGallery } from './modules/simplelightbox';
-import { refs } from './modules/refs';
+// import { refs } from './modules/refs';
 
 import {
     notifyFailure,
     notifySuccess,
     notifyInfoSearch,
 } from './modules/notify';
+
+const refs = {
+    searchForm: document.querySelector('.search-form'),
+    gallery: document.querySelector('.gallery'),
+    guard: document.querySelector('.js-guard'),
+};
 
 let searchQuery = '';
 let page = 1;
