@@ -22,38 +22,24 @@ img {
 }
 
 .container {
-    // max-width: 1400px;
     margin: 30 auto;
 }
 
 .search-form {
-    // position: fixed;
     display: flex;
-    align-items: center;
-    width: 100%;
     font-size: 10px;
     color: grey;
     font: inherit;
     padding: 10px;
-    // gap: 10px;
-    top: 0;
-    left: 0;
     background-color: rgba(3, 14, 226, 0.988);
-    border-radius: 10px;
 }
 
 .search-input {
-    border-radius: 10px;
     padding: 10px;
     margin-left: 20px;
     cursor: pointer;
 }
 
-// .search-input:hover,
-// .search-input:focus {
-//     outline: none;
-//     border-color: cyan;
-// }
 .search-input:hover,
 .search-input:focus {
     outline: none;
@@ -66,8 +52,7 @@ img {
     padding-bottom: 10px;
     cursor: pointer;
     background-color: #e7efeaad;
-    // border-color: transparent;
-    border-radius: 8px;
+    border: none;
     transition-property: background-color;
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -75,7 +60,7 @@ img {
 
 .btn:hover,
 .btn:focus {
-    background-color: #0ef8395c;
+    background-color: #f4edeed6;
 }
 
 .gallery {
@@ -91,7 +76,6 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    // background-color: rgb(238, 246, 9);
 }
 
 .photo-card {
