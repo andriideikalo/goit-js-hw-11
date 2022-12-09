@@ -28,13 +28,14 @@ img {
 .search-form {
     display: flex;
     font-size: 10px;
-    color: grey;
-    font: inherit;
+    // font: inherit;
     padding: 10px;
     background-color: rgba(3, 14, 226, 0.988);
 }
 
 .search-input {
+    font-style: italic;
+    color: grey;
     padding: 10px;
     margin-left: 20px;
     cursor: pointer;
@@ -51,7 +52,7 @@ img {
     padding-top: 10px;
     padding-bottom: 10px;
     cursor: pointer;
-    background-color: #e7efeaad;
+    background-color: #eafbf0d8;
     border: none;
     transition-property: background-color;
     transition-duration: 250ms;
@@ -60,7 +61,7 @@ img {
 
 .btn:hover,
 .btn:focus {
-    background-color: #f4edeed6;
+    background-color: #f4edeeed;
 }
 
 .gallery {
@@ -89,4 +90,13 @@ img {
     align-items: center;
     flex-direction: column;
     gap: 10px;
+}
+
+.icon {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
 }
