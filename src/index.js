@@ -4,13 +4,8 @@ import { createMarkup } from './modules/markup';
 import { PER_PAGE, fetchPhotoApi } from './modules/fetch';
 // import SimpleLightbox from "simplelightbox";
 import { simpleGallery } from './modules/simplelightbox';
+import { notifyFailure, notifySuccess, notifyInfoSearch, } from './modules/notify';
 
-
-import {
-    notifyFailure,
-    notifySuccess,
-    notifyInfoSearch,
-} from './modules/notify';
 
 const refs = {
     searchForm: document.querySelector('.search-form'),
