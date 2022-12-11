@@ -4,7 +4,7 @@ import { createMarkup } from './modules/markup';
 import { PER_PAGE, fetchPhotoApi } from './modules/fetch';
 // import SimpleLightbox from "simplelightbox";
 import { simpleGallery } from './modules/simplelightbox';
-// import { refs } from './modules/refs';
+
 
 import {
     notifyFailure,
