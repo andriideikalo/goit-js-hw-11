@@ -10,7 +10,7 @@ const searchParams = new URLSearchParams({
     safesearch: true,
 });
 
-export const applicateAPI = function(searchQuery, page, perPage) {
+export const fetchPhotoApi = function(searchQuery, page, perPage) {
     return axios.get(
         `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${perPage}&page=${page}&`
     );

@@ -4,7 +4,7 @@ import { simpleGallery } from './modules/simplelightbox';
 import Notiflix from 'notiflix';
 import './sass/_styles.scss';
 import { createMarkup } from './modules/markup';
-import { applicateAPI } from './modules/fetch';
+import { fetchPhotoApi } from './modules/fetch';
 import { notifyFailure } from './modules/notify';
 import { notifySuccess } from './modules/notify';
 import { notifyInfoSearch } from './modules/notify';
@@ -29,7 +29,7 @@ const options = {
 searchForm.addEventListener('submit', onSubmit);
 
 function onSubmit(evt) {
-    // console.log(e)
+    // console.log(evt)
     evt.preventDefault();
     imageGallery.innerHTML = '';
     if (page > 1) {
@@ -38,13 +38,14 @@ function onSubmit(evt) {
     page = 1;
 
     const searchQuery = evt.target.elements.searchQuery.value.trim();
-    observer = new IntersectionObserver(onLoad, options);
+    observer = new IntersectionObserver(onSearch, options);
     observer.observe(guard);
 
-    function onLoad(entries, observer) {
+    function onSearch(entries, observer) {
+        evt.preventDefault();
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                applicateAPI(searchQuery, page, PER_PAGE)
+                fetchPhotoApi(searchQuery, page, PER_PAGE)
                     .then(response => {
                         // console.log(response)
                         // console.log(page)
