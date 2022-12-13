@@ -2,7 +2,12 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import Notiflix from 'notiflix';
 import './sass/_styles.scss';
+import { createMarkup } from './modules/markup';
 import { applicateAPI } from './modules/fetch';
+import { notifyFailure } from './modules/notify';
+import { notifySuccess } from './modules/notify';
+import { notifyInfoSearch } from './modules/notify';
+
 // import axios from 'axios';
 
 const { searchForm, imageGallery, guard } = {
@@ -68,41 +73,6 @@ function onSubmit(e) {
     }
 }
 
-function createMarkup(array) {
-    return array
-        .map(
-            ({
-                webformatURL,
-                largeImageURL,
-                tags,
-                likes,
-                views,
-                comments,
-                downloads,
-            }) => `<div class="photo-card"><div class="thumb"><a class="gallery-item" href="${largeImageURL}">
-        <img src="${webformatURL}" alt="${tags}" loading="lazy" /></a></div>
-        <div class="info">
-          <p class="info-item">
-            <b>Likes</b>
-            <span>${likes}</span>
-          </p>
-          <p class="info-item">
-            <b>Views</b>
-            <span>${views}</span>
-          </p>
-          <p class="info-item">
-            <b>Comments</b>
-            <span>${comments}</span>
-          </p>
-          <p class="info-item">
-            <b>Downloads</b>
-            <span>${downloads}</span>
-          </p>
-        </div>
-      </div>`
-        )
-        .join('');
-}
 
 function checkScrollPosition() {
     if (window.scrollY > window.innerHeight - 70) {
