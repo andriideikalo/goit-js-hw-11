@@ -46,9 +46,9 @@ function onSubmit(evt) {
             if (entry.isIntersecting) {
                 applicateAPI(searchQuery, page, PER_PAGE)
                     .then(response => {
-                        console.log(response)
-                        console.log(page)
-                        console.log(response.data.hits.length)
+                        // console.log(response)
+                        // console.log(page)
+                        // console.log(response.data.hits.length)
                         if (response.data.hits.length < 1) {
                             throw new Error();
                         }
