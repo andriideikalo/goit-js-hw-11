@@ -7,23 +7,23 @@ import { simpleGallery } from './modules/simplelightbox';
 import { notifyFailure, notifySuccess, notifyInfoSearch, } from './modules/notify';
 
 const PER_PAGE = 40;
-
-const searchForm = document.querySelector('.search-form');
-const gallery = document.querySelector('.gallery');
-const guard = document.querySelector('.js-guard');
-
+const refs = {
+    searchForm: document.querySelector('.search-form'),
+    gallery: document.querySelector('.gallery'),
+    guard: document.querySelector('.js-guard'),
+};
 
 let searchQuery = '';
 let page = 1;
 let totalHits = '';
 
-searchForm.addEventListener('submit', onSearch);
+refs.searchForm.addEventListener('submit', onSearch);
 
 
 function onSearch(evt) {
     evt.preventDefault();
     page = 1;
-    observer.observe(refs.guard);
+    observer.unobserve(refs.guard);
     searchQuery = evt.currentTarget.searchQuery.value.trim();
     refs.gallery.innerHTML = '';
     evt.currentTarget.reset();
@@ -40,9 +40,8 @@ function onSearch(evt) {
     fetchPhotoApi(searchQuery, page)
         .then(gallery => {
             totalHits = gallery.data.totalHits;
-
             console.log(totalHits)
-            console.log(guard)
+            console.log(refs.guard)
 
 
             // if (data.totalHits === data.total) {
@@ -55,7 +54,7 @@ function onSearch(evt) {
             addMarkup(gallery.data.hits);
             simpleGallery.refresh();
 
-            observer.observe(guard);
+            observer.observe(refs.guard);
             console.log(gallery);
             console.log(page);
             console.log(totalHits);
@@ -76,7 +75,6 @@ const options = {
 };
 window.addEventListener('scroll', options)
 const observer = new IntersectionObserver(onLoad, options);
-observer.observe(guard);
 
 function onLoad(entries, observer) {
     entries.forEach(entry => {
@@ -84,10 +82,10 @@ function onLoad(entries, observer) {
         if (entry.isIntersecting) {
             page += 1;
 
-            fetchPhotoApi(page)
-                .then(data => {
-                    gallery.insertAdjacentHTML('beforeend', createMarkup(arr));
-                    // simpleGallery.refresh();
+            fetchPhotoApi(searchQuery, page)
+                .then(gallery => {
+                    addMarkup(gallery.data.hits);
+                    simpleGallery.refresh();
 
                     // const { height: cardHeight } = document
                     //     .querySelector(".gallery")
@@ -102,8 +100,8 @@ function onLoad(entries, observer) {
                     // console.log(totalHits);
                     // console.log(Math.ceil(totalHits / PER_PAGE));
 
-                    if (data.page === data.pages) {
-                        observer.unobserve(guard);
+                    if (page === Math.ceil(totalHits / PER_PAGE)) {
+                        observer.unobserve(refs.guard);
                     }
                 })
 
@@ -118,36 +116,15 @@ function onLoad(entries, observer) {
     });
 }
 
-function createMarkup(arr) {
-    return arr
-        .map(
-            ({
-                webformatURL,
-                largeImageURL,
-                tags,
-                likes,
-                views,
-                comments,
-                downloads,
-            }) =>
-            `<a href="${largeImageURL}">
-        <div class="photo-card">
-  <img src="${webformatURL}" alt="${tags}" loading="lazy" />
-  <div class="info">
-    <p class="info-item">
-      <b>Likes</b>${likes}
-    </p>
-    <p class="info-item">
-      <b>Views</b>${views}
-    </p>
-    <p class="info-item">
-      <b>Comments</b>${comments}
-    </p>
-    <p class="info-item">
-      <b>Downloads</b>${downloads}
-    </p>
-  </div>
-</div></a>`
-        )
-        .join('');
+function checkScrollPosition() {
+    if (window.scrollY > window.innerHeight - 70) {
+        window.removeEventListener('scroll', checkScrollPosition);
+        notifyInfo();
+    }
+}
+
+function notifyInfo() {
+    Notiflix.Notify.info(
+        "We're sorry, but you've reached the end of search results"
+    );
 }
