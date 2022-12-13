@@ -77,7 +77,7 @@ function onSubmit(e) {
 function checkScrollPosition() {
     if (window.scrollY > window.innerHeight - 70) {
         window.removeEventListener('scroll', checkScrollPosition);
-        notifyInfo();
+        notifyInfoSearch();
     }
 }
 
@@ -104,21 +104,21 @@ function changeFormOpacity() {
     });
 }
 
-function notifySuccess(response) {
-    Notiflix.Notify.success(
-        `Hooray! We found: ${response.data.total} images,
-       available for display: ${response.data.totalHits} images.`
-    );
-}
+// function notifySuccess(response) {
+//     Notiflix.Notify.success(
+//         `Hooray! We found: ${response.data.total} images,
+//        available for display: ${response.data.totalHits} images.`
+//     );
+// }
 
-function notifyFailure() {
-    Notiflix.Notify.failure(
-        'Sorry, there are no images matching your search query. Please try again.'
-    );
-}
+// function notifyFailure() {
+//     Notiflix.Notify.failure(
+//         'Sorry, there are no images matching your search query. Please try again.'
+//     );
+// }
 
-function notifyInfo() {
-    Notiflix.Notify.info(
-        "We're sorry, but you've reached the end of search results"
-    );
-}
+// function notifyInfo() {
+//     Notiflix.Notify.info(
+//         "We're sorry, but you've reached the end of search results"
+//     );
+// }

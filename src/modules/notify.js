@@ -11,8 +11,8 @@ export const notifyFailure = () => {
     );
 };
 
-export const notifySuccess = totalHits => {
-    return Notify.success(`Hooray! We found ${totalHits} images.`, {
+export const notifySuccess = response => {
+    return Notify.success(`Hooray! We found ${response.data.total} images.`, {
         timeout: 3000,
         width: '360px',
         svgSize: '120px',
