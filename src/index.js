@@ -34,6 +34,7 @@ function onSubmit(evt) {
     imageGallery.innerHTML = '';
     if (page > 1) {
         observer.unobserve(guard);
+        // notifyInfoSearch();
     }
     page = 1;
 
@@ -50,6 +51,11 @@ function onSubmit(evt) {
                         // console.log(response)
                         // console.log(page)
                         // console.log(response.data.hits.length)
+                        if (!searchQuery) {
+                            imageGallery.innerHTML = '';
+                            notifyInfoSearch();
+                            return;
+                        }
                         if (response.data.hits.length < 1) {
                             throw new Error();
                         }
