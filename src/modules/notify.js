@@ -12,6 +12,7 @@ export const notifyFailure = () => {
 };
 
 export const notifySuccess = totalHits => {
+    console.log(totalHits)
     return Notify.success(`Hooray! We found ${totalHits} images.`, {
         timeout: 3000,
         width: '360px',

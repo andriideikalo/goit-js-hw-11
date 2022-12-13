@@ -11,6 +11,7 @@ const searchParams = new URLSearchParams({
 });
 
 export async function fetchPhotoApi(searchValue, page = 1) {
+    // console.log(PER_PAGE)
     try {
         const response = await axios.get(
             `${BASE_URL}?key=${API_KEY}&q=${searchValue}&${searchParams}&page=${page}&per_page=${PER_PAGE}`
